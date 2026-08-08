@@ -3,7 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SSQUARE | Get Free Consultation</title>
+
+    <title>SSQUARE | Sales & Marketing Solutions</title>
+    <meta name="description" content="SSQUARE provides sales development, custom marketing and business solutions.">
+
     <style>
         :root {
             --primary: #2563eb;
@@ -19,14 +22,15 @@
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+                Roboto, Helvetica, Arial, sans-serif;
         }
 
         body {
             background-color: var(--light);
             color: var(--text);
             line-height: 1.5;
-            padding-bottom: 80px; /* Offset for fixed floating actions on mobile */
+            padding-bottom: 80px;
         }
 
         header {
@@ -81,7 +85,6 @@
             color: #64748b;
         }
 
-        /* Lead Capture Form Container */
         .form-card {
             background: #ffffff;
             margin: 0 1.25rem 2rem;
@@ -120,8 +123,8 @@
             margin-bottom: 0.35rem;
         }
 
-        .form-group input, 
-        .form-group select, 
+        .form-group input,
+        .form-group select,
         .form-group textarea {
             width: 100%;
             padding: 0.75rem 1rem;
@@ -132,8 +135,8 @@
             transition: border-color 0.2s;
         }
 
-        .form-group input:focus, 
-        .form-group select:focus, 
+        .form-group input:focus,
+        .form-group select:focus,
         .form-group textarea:focus {
             border-color: var(--primary);
             box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
@@ -156,7 +159,33 @@
             background: var(--primary-dark);
         }
 
-        /* Features Section */
+        .submit-btn:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+        }
+
+        .form-message {
+            display: none;
+            margin-top: 1rem;
+            padding: 0.85rem;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .form-message.success {
+            display: block;
+            background: #dcfce7;
+            color: #166534;
+        }
+
+        .form-message.error {
+            display: block;
+            background: #fee2e2;
+            color: #991b1b;
+        }
+
         .features {
             padding: 1rem 1.25rem 2rem;
             max-width: 600px;
@@ -197,7 +226,6 @@
             color: #64748b;
         }
 
-        /* Floating WhatsApp Button */
         .whatsapp-float {
             position: fixed;
             bottom: 20px;
@@ -223,7 +251,6 @@
             transform: scale(1.05);
         }
 
-        /* Fixed Mobile Bottom Bar for Quick Call */
         .mobile-bar {
             display: none;
             position: fixed;
@@ -255,83 +282,309 @@
         }
     </style>
 </head>
+
 <body>
 
-    <header>
-        <a href="#" class="logo">S<span>SQUARE</span></a>
-    </header>
+<header>
+    <a href="/" class="logo">S<span>SQUARE</span></a>
+</header>
 
-    <section class="hero">
-        <span class="badge">#1 Digital Partner</span>
-        <h1>Grow Your Business With SSQUARE</h1>
-        <p>Get tailored web solutions and custom software designed to convert leads into sales.</p>
-    </section>
+<section class="hero">
+    <span class="badge">#1 Digital Partner</span>
 
-    <!-- Lead Capture Form -->
-    <div class="form-card">
-        <h2>Request a Free Quote</h2>
-        <p class="sub-text">Fill in your details below and we will contact you shortly.</p>
-        
-        <!-- Replace 'YOUR_FORM_ENDPOINT' with Web3Forms or Formspree endpoint -->
-        <form action="https://api.web3forms.com/submit" method="POST">
-            <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE">
-            
-            <div class="form-group">
-                <label for="name">Full Name</label>
-                <input type="text" id="name" name="name" placeholder="John Doe" required>
-            </div>
+    <h1>Grow Your Business With SSQUARE</h1>
 
-            <div class="form-group">
-                <label for="phone">Phone Number</label>
-                <input type="tel" id="phone" name="phone" placeholder="+91 98765 43210" required>
-            </div>
+    <p>
+        Get tailored Sales solutions and custom proposals designed
+        to convert leads into sales.
+    </p>
+</section>
 
-            <div class="form-group">
-                <label for="service">Service Required</label>
-                <select id="service" name="service">
-                    <option value="web-development">Web Development</option>
-                    <option value="custom-software">Custom Software</option>
-                    <option value="cloud-solutions">Cloud Solutions</option>
-                </select>
-            </div>
+<div class="form-card">
 
-            <button type="submit" class="submit-btn">Get Started Now</button>
-        </form>
+    <h2>Request a Free Quote</h2>
+
+    <p class="sub-text">
+        Fill in your details below and we will contact you shortly.
+    </p>
+
+    <!-- ================================
+         SSQUARE LEAD FORM
+         Leads will be sent to:
+         nishant.rai@gmail.com
+         ================================= -->
+
+    <form id="leadForm"
+          action="https://api.web3forms.com/submit"
+          method="POST">
+
+        <!-- REPLACE THIS WITH YOUR WEB3FORMS ACCESS KEY -->
+        <input
+            type="hidden"
+            name="access_key"
+            value="YOUR_WEB3FORMS_ACCESS_KEY">
+
+        <!-- EMAIL SETTINGS -->
+        <input
+            type="hidden"
+            name="subject"
+            value="New SSQUARE Website Lead">
+
+        <input
+            type="hidden"
+            name="from_name"
+            value="SSQUARE Website">
+
+        <!-- LEAD DESTINATION -->
+        <input
+            type="hidden"
+            name="to"
+            value="nishant.rai@gmail.com">
+
+        <!-- Additional information -->
+        <input
+            type="hidden"
+            name="website"
+            value="ssquare.org.in">
+
+        <input
+            type="hidden"
+            name="source"
+            value="SSQUARE Website">
+
+        <div class="form-group">
+
+            <label for="name">
+                Full Name
+            </label>
+
+            <input
+                type="text"
+                id="name"
+                name="name"
+                placeholder="Your Name"
+                autocomplete="name"
+                required>
+
+        </div>
+
+        <div class="form-group">
+
+            <label for="phone">
+                Phone Number
+            </label>
+
+            <input
+                type="tel"
+                id="phone"
+                name="phone"
+                placeholder="+91 XXXXXXXXXX"
+                autocomplete="tel"
+                pattern="[0-9+\-\s()]{10,}"
+                required>
+
+        </div>
+
+        <div class="form-group">
+
+            <label for="service">
+                Service Required
+            </label>
+
+            <select
+                id="service"
+                name="service"
+                required>
+
+                <option value="">
+                    Select a service
+                </option>
+
+                <option value="Sales Development">
+                    Sales Development
+                </option>
+
+                <option value="Custom Marketing">
+                    Custom Marketing
+                </option>
+
+                <option value="Other Solutions">
+                    Other Solutions
+                </option>
+
+            </select>
+
+        </div>
+
+        <button
+            type="submit"
+            class="submit-btn"
+            id="submitBtn">
+
+            Get Started Now
+
+        </button>
+
+        <div
+            id="formMessage"
+            class="form-message">
+        </div>
+
+    </form>
+
+</div>
+
+<section class="features">
+
+    <div class="feature-item">
+
+        <div class="feature-icon">
+            ✓
+        </div>
+
+        <div class="feature-text">
+
+            <h3>
+                Fast Turnaround
+            </h3>
+
+            <p>
+                Deploy your business digital solutions within days.
+            </p>
+
+        </div>
+
     </div>
 
-    <!-- Highlights / Key Value Propositions -->
-    <section class="features">
-        <div class="feature-item">
-            <div class="feature-icon">✓</div>
-            <div class="feature-text">
-                <h3>Fast Turnaround</h3>
-                <p>Deploy your business digital solutions within days.</p>
-            </div>
-        </div>
-        <div class="feature-item">
-            <div class="feature-icon">✓</div>
-            <div class="feature-text">
-                <h3>Direct Support</h3>
-                <p>Connect instantly on WhatsApp for quick inquiries.</p>
-            </div>
-        </div>
-    </section>
+    <div class="feature-item">
 
-    <!-- Floating WhatsApp Button -->
-    <a href="https://wa.me/918745863882?text=Hello%20SSQUARE,%20I%20would%20like%20to%20get%20more%20information%20about%20your%20services." 
-       class="whatsapp-float" 
-       target="_blank" 
-       rel="noopener noreferrer" 
-       aria-label="Chat on WhatsApp">
-        <svg width="32" height="32" viewBox="0 0 24 24" fill="white">
-            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
-        </svg>
+        <div class="feature-icon">
+            ✓
+        </div>
+
+        <div class="feature-text">
+
+            <h3>
+                Direct Support
+            </h3>
+
+            <p>
+                Connect instantly on WhatsApp for quick inquiries.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================================
+     WHATSAPP
+     ================================= -->
+
+<a
+    href="https://wa.me/918745863882?text=Hello%20SSQUARE,%20I%20would%20like%20to%20get%20more%20information%20about%20your%20services."
+    class="whatsapp-float"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Chat on WhatsApp">
+
+    <svg
+        width="32"
+        height="32"
+        viewBox="0 0 24 24"
+        fill="white">
+
+        <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+
+    </svg>
+
+</a>
+
+<!-- ================================
+     MOBILE CALL BAR
+     ================================= -->
+
+<div class="mobile-bar">
+
+    <a href="tel:+918745863882">
+        📞 Call Us: +91 8745863882
     </a>
 
-    <!-- Mobile Call Bar -->
-    <div class="mobile-bar">
-        <a href="tel:+918745863882">📞 Call Us: +91 8745863882</a>
-    </div>
+</div>
+
+
+<script>
+
+    /*
+     * SSQUARE LEAD FORM
+     * Sends form data to Web3Forms.
+     */
+
+    const leadForm = document.getElementById("leadForm");
+    const submitBtn = document.getElementById("submitBtn");
+    const formMessage = document.getElementById("formMessage");
+
+    leadForm.addEventListener("submit", async function(event) {
+
+        event.preventDefault();
+
+        submitBtn.disabled = true;
+        submitBtn.textContent = "Submitting...";
+
+        formMessage.className = "form-message";
+        formMessage.textContent = "";
+
+        const formData = new FormData(leadForm);
+
+        try {
+
+            const response = await fetch(
+                "https://api.web3forms.com/submit",
+                {
+                    method: "POST",
+                    body: formData
+                }
+            );
+
+            const result = await response.json();
+
+            if (result.success) {
+
+                formMessage.className =
+                    "form-message success";
+
+                formMessage.textContent =
+                    "Thank you! Your request has been received. We will contact you shortly.";
+
+                leadForm.reset();
+
+            } else {
+
+                throw new Error(
+                    result.message || "Unable to submit the form."
+                );
+
+            }
+
+        } catch (error) {
+
+            console.error("Form submission error:", error);
+
+            formMessage.className =
+                "form-message error";
+
+            formMessage.textContent =
+                "Sorry, something went wrong. Please try again or contact us on WhatsApp.";
+
+        }
+
+        submitBtn.disabled = false;
+        submitBtn.textContent = "Get Started Now";
+
+    });
+
+</script>
 
 </body>
 </html>
